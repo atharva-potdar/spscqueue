@@ -1,8 +1,9 @@
 v0.1 performance stats:
 
-./build/spsc_bench
+```
+./build/spscqueue
 2026-08-28T21:46:10+05:30
-Running ./build/spsc_bench
+Running ./build/spscqueue
 Run on (12 X 2993.41 MHz CPU s)
 CPU Caches:
   L1 Data 32 KiB (x6)
@@ -14,3 +15,8 @@ Load Average: 1.19, 1.14, 1.03
 Benchmark                  Time             CPU   Iterations
 ------------------------------------------------------------
 BM_EnqueueDequeue       3.03 ns         3.02 ns    230526415
+```
+
+v0.1.1 performance stats:
+
+Same as earlier, nothing performance-relevant was changed

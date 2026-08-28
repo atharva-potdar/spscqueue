@@ -6,8 +6,8 @@ static void BM_EnqueueDequeue(benchmark::State& state) {
     int val = 42;
 
     for (auto _ : state) {
-        q.enqueue(val);
-        q.dequeue(val);
+        (void) q.enqueue(val);
+        (void) q.dequeue(val);
         benchmark::DoNotOptimize(val);
     }
 }
