@@ -5,3 +5,6 @@ build:
     cmake --build build
 run:
     ./build/spscqueue
+clean:
+    rm -rf build
+    rm compile_commands.json
