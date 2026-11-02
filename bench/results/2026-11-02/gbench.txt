@@ -1,0 +1,57 @@
+2026-11-02T19:38:24+05:30
+Running ./build/release/spscqueue
+Run on (12 X 1634.03 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x6)
+  L1 Instruction 32 KiB (x6)
+  L2 Unified 512 KiB (x6)
+  L3 Unified 4096 KiB (x2)
+Load Average: 1.54, 1.42, 1.33
+----------------------------------------------------------------------------------------------
+Benchmark                                                    Time             CPU   Iterations
+----------------------------------------------------------------------------------------------
+BM_SingleThreaded                                         3.27 ns         3.25 ns     86378393
+BM_SingleThreaded                                         3.26 ns         3.24 ns     86378393
+BM_SingleThreaded                                         3.26 ns         3.25 ns     86378393
+BM_SingleThreaded                                         3.28 ns         3.27 ns     86378393
+BM_SingleThreaded                                         3.27 ns         3.25 ns     86378393
+BM_SingleThreaded_mean                                    3.27 ns         3.25 ns            5
+BM_SingleThreaded_median                                  3.27 ns         3.25 ns            5
+BM_SingleThreaded_stddev                                 0.010 ns        0.009 ns            5
+BM_SingleThreaded_cv                                      0.29 %          0.27 %             5
+BM_EmptyDequeue                                          0.339 ns        0.338 ns    835353347
+BM_EmptyDequeue                                          0.338 ns        0.337 ns    835353347
+BM_EmptyDequeue                                          0.338 ns        0.337 ns    835353347
+BM_EmptyDequeue                                          0.338 ns        0.337 ns    835353347
+BM_EmptyDequeue                                          0.339 ns        0.338 ns    835353347
+BM_EmptyDequeue_mean                                     0.339 ns        0.337 ns            5
+BM_EmptyDequeue_median                                   0.338 ns        0.337 ns            5
+BM_EmptyDequeue_stddev                                   0.000 ns        0.000 ns            5
+BM_EmptyDequeue_cv                                        0.14 %          0.15 %             5
+BM_FullEnqueue                                           0.693 ns        0.689 ns    410197186
+BM_FullEnqueue                                           0.691 ns        0.688 ns    410197186
+BM_FullEnqueue                                           0.689 ns        0.686 ns    410197186
+BM_FullEnqueue                                           0.691 ns        0.688 ns    410197186
+BM_FullEnqueue                                           0.691 ns        0.688 ns    410197186
+BM_FullEnqueue_mean                                      0.691 ns        0.688 ns            5
+BM_FullEnqueue_median                                    0.691 ns        0.688 ns            5
+BM_FullEnqueue_stddev                                    0.001 ns        0.001 ns            5
+BM_FullEnqueue_cv                                         0.19 %          0.18 %             5
+BM_MultiThreaded/real_time/threads:2                      8.29 ns         8.26 ns     33610874 same L3
+BM_MultiThreaded/real_time/threads:2                      8.29 ns         8.25 ns     33610874 same L3
+BM_MultiThreaded/real_time/threads:2                      8.28 ns         8.25 ns     33610874 same L3
+BM_MultiThreaded/real_time/threads:2                      8.32 ns         8.29 ns     33610874 same L3
+BM_MultiThreaded/real_time/threads:2                      8.34 ns         8.30 ns     33610874 same L3
+BM_MultiThreaded/real_time/threads:2_mean                 8.30 ns         8.27 ns            5 same L3
+BM_MultiThreaded/real_time/threads:2_median               8.29 ns         8.26 ns            5 same L3
+BM_MultiThreaded/real_time/threads:2_stddev              0.025 ns        0.022 ns            5 same L3
+BM_MultiThreaded/real_time/threads:2_cv                   0.30 %          0.27 %             5 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2              21.3 ns         21.3 ns     13051412 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2              21.5 ns         21.4 ns     13051412 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2              21.4 ns         21.3 ns     13051412 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2              21.5 ns         21.4 ns     13051412 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2              21.3 ns         21.2 ns     13051412 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2_mean         21.4 ns         21.3 ns            5 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2_median       21.4 ns         21.3 ns            5 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2_stddev      0.094 ns        0.094 ns            5 same L3
+BM_MultiThreadedUnpadded/real_time/threads:2_cv           0.44 %          0.44 %             5 same L3

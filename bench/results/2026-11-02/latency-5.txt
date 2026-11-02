@@ -1,0 +1,27 @@
+SPSCQueue latency harness
+cpu: AMD Ryzen 5 4600H with Radeon Graphics
+scheduling: other
+TSC->ns factor: 0.333969577
+empty-region cost: 90 ticks (30.06 ns)
+allowed cpus: 2 3 4 10
+ENV ns_per_tick=0.333969577 floor_ticks=90 floor_ns=30.057
+method: lfence+rdtscp on both ends, median empty-region cost subtracted per sample
+noop (measurement floor)                     31.61    30.06    40.08    40.08      40.08    6392.18
+RESULT_LAT name="noop (measurement floor)" n=100000 mean=31.6050 p50=30.0573 p90=40.0763 p99=40.0763 p999=40.0763 max=6392.1777
+
+Benchmark                                      mean      p50      p90      p99      p99.9        max
+----------------------------------------  ---------  -------  -------  -------  ---------  ---------
+one-way handoff (SMT siblings, cpu2->cpu3)     33.72    30.06    40.08    50.10      50.10   19427.01
+RESULT_LAT name="one-way handoff (SMT siblings, cpu2->cpu3)" n=100000 mean=33.7164 p50=30.0573 p90=40.0763 p99=50.0954 p999=50.0954 max=19427.0103
+round trip (SMT siblings, cpu2->cpu3)        65.93    70.13    80.15    80.15     100.19   14096.86
+RESULT_LAT name="round trip (SMT siblings, cpu2->cpu3)" n=100000 mean=65.9289 p50=70.1336 p90=80.1527 p99=80.1527 p999=100.1909 max=14096.8559
+one-way handoff (same L3, cpu2->cpu4)       106.23   100.19   110.21   150.29     280.53    8225.67
+RESULT_LAT name="one-way handoff (same L3, cpu2->cpu4)" n=100000 mean=106.2313 p50=100.1909 p90=110.2100 p99=150.2863 p999=280.5344 max=8225.6707
+round trip (same L3, cpu2->cpu4)            184.01   180.34   190.36   230.44     390.74   22542.95
+RESULT_LAT name="round trip (same L3, cpu2->cpu4)" n=100000 mean=184.0145 p50=180.3436 p90=190.3627 p99=230.4390 p999=390.7444 max=22542.9465
+one-way handoff (different L3, cpu2->cpu10)    244.61   230.44   260.50   450.86     681.30    8275.77
+RESULT_LAT name="one-way handoff (different L3, cpu2->cpu10)" n=100000 mean=244.6111 p50=230.4390 p90=260.4963 p99=450.8589 p999=681.2979 max=8275.7661
+round trip (different L3, cpu2->cpu10)      433.74   410.78   500.95   721.37    1072.04   16982.35
+RESULT_LAT name="round trip (different L3, cpu2->cpu10)" n=100000 mean=433.7411 p50=410.7826 p90=500.9544 p99=721.3743 p999=1072.0423 max=16982.3530
+
+max is a single-sample scheduler/interrupt outlier; p99.9 is the reportable tail.

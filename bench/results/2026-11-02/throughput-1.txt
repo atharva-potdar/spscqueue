@@ -1,0 +1,47 @@
+SPSCQueue throughput harness
+cpu: AMD Ryzen 5 4600H with Radeon Graphics
+scheduling: other
+TSC->ns factor: 0.334004485
+allowed cpus: 2 3 4 10
+ENV ns_per_tick=0.334004485
+
+Benchmark                                                    throughput           cost
+---------------------------------------------------------- ------------ --------------
+padded ring 1,024, 8 B (SMT siblings, cpu2->cpu3)     77.11 Mops/s    12.97 ns/pair  (20000000 items in 0.259 s)
+RESULT_TP name="padded ring 1,024, 8 B (SMT siblings, cpu2->cpu3)" mops=77.1114 ns_per_pair=12.9683 items=20000000 seconds=0.259365
+padded ring 65,536, 8 B (SMT siblings, cpu2->cpu3)     83.42 Mops/s    11.99 ns/pair  (20000000 items in 0.240 s)
+RESULT_TP name="padded ring 65,536, 8 B (SMT siblings, cpu2->cpu3)" mops=83.4213 ns_per_pair=11.9873 items=20000000 seconds=0.239747
+padded ring 262,144, 8 B (SMT siblings, cpu2->cpu3)     84.26 Mops/s    11.87 ns/pair  (20000000 items in 0.237 s)
+RESULT_TP name="padded ring 262,144, 8 B (SMT siblings, cpu2->cpu3)" mops=84.2631 ns_per_pair=11.8676 items=20000000 seconds=0.237352
+padded ring 65,536, 64 B (SMT siblings, cpu2->cpu3)     94.53 Mops/s    10.58 ns/pair  (5000000 items in 0.053 s)
+RESULT_TP name="padded ring 65,536, 64 B (SMT siblings, cpu2->cpu3)" mops=94.5283 ns_per_pair=10.5788 items=5000000 seconds=0.052894
+padded ring 65,536, 256 B (SMT siblings, cpu2->cpu3)     29.38 Mops/s    34.04 ns/pair  (5000000 items in 0.170 s)
+RESULT_TP name="padded ring 65,536, 256 B (SMT siblings, cpu2->cpu3)" mops=29.3757 ns_per_pair=34.0418 items=5000000 seconds=0.170209
+unpadded ring 65,536, 8 B (SMT siblings, cpu2->cpu3)     97.58 Mops/s    10.25 ns/pair  (20000000 items in 0.205 s)
+RESULT_TP name="unpadded ring 65,536, 8 B (SMT siblings, cpu2->cpu3)" mops=97.5842 ns_per_pair=10.2476 items=20000000 seconds=0.204951
+padded ring 1,024, 8 B (same L3, cpu2->cpu4)    108.23 Mops/s     9.24 ns/pair  (20000000 items in 0.185 s)
+RESULT_TP name="padded ring 1,024, 8 B (same L3, cpu2->cpu4)" mops=108.2343 ns_per_pair=9.2392 items=20000000 seconds=0.184784
+padded ring 65,536, 8 B (same L3, cpu2->cpu4)    107.97 Mops/s     9.26 ns/pair  (20000000 items in 0.185 s)
+RESULT_TP name="padded ring 65,536, 8 B (same L3, cpu2->cpu4)" mops=107.9665 ns_per_pair=9.2621 items=20000000 seconds=0.185243
+padded ring 262,144, 8 B (same L3, cpu2->cpu4)    111.18 Mops/s     8.99 ns/pair  (20000000 items in 0.180 s)
+RESULT_TP name="padded ring 262,144, 8 B (same L3, cpu2->cpu4)" mops=111.1840 ns_per_pair=8.9941 items=20000000 seconds=0.179882
+padded ring 65,536, 64 B (same L3, cpu2->cpu4)     54.28 Mops/s    18.42 ns/pair  (5000000 items in 0.092 s)
+RESULT_TP name="padded ring 65,536, 64 B (same L3, cpu2->cpu4)" mops=54.2754 ns_per_pair=18.4246 items=5000000 seconds=0.092123
+padded ring 65,536, 256 B (same L3, cpu2->cpu4)     17.84 Mops/s    56.04 ns/pair  (5000000 items in 0.280 s)
+RESULT_TP name="padded ring 65,536, 256 B (same L3, cpu2->cpu4)" mops=17.8437 ns_per_pair=56.0421 items=5000000 seconds=0.280210
+unpadded ring 65,536, 8 B (same L3, cpu2->cpu4)     44.58 Mops/s    22.43 ns/pair  (20000000 items in 0.449 s)
+RESULT_TP name="unpadded ring 65,536, 8 B (same L3, cpu2->cpu4)" mops=44.5834 ns_per_pair=22.4299 items=20000000 seconds=0.448597
+padded ring 1,024, 8 B (different L3, cpu2->cpu10)     68.08 Mops/s    14.69 ns/pair  (20000000 items in 0.294 s)
+RESULT_TP name="padded ring 1,024, 8 B (different L3, cpu2->cpu10)" mops=68.0836 ns_per_pair=14.6878 items=20000000 seconds=0.293757
+padded ring 65,536, 8 B (different L3, cpu2->cpu10)     69.76 Mops/s    14.33 ns/pair  (20000000 items in 0.287 s)
+RESULT_TP name="padded ring 65,536, 8 B (different L3, cpu2->cpu10)" mops=69.7648 ns_per_pair=14.3339 items=20000000 seconds=0.286677
+padded ring 262,144, 8 B (different L3, cpu2->cpu10)     69.78 Mops/s    14.33 ns/pair  (20000000 items in 0.287 s)
+RESULT_TP name="padded ring 262,144, 8 B (different L3, cpu2->cpu10)" mops=69.7775 ns_per_pair=14.3313 items=20000000 seconds=0.286625
+padded ring 65,536, 64 B (different L3, cpu2->cpu10)     26.10 Mops/s    38.31 ns/pair  (5000000 items in 0.192 s)
+RESULT_TP name="padded ring 65,536, 64 B (different L3, cpu2->cpu10)" mops=26.1044 ns_per_pair=38.3078 items=5000000 seconds=0.191539
+padded ring 65,536, 256 B (different L3, cpu2->cpu10)      9.58 Mops/s   104.37 ns/pair  (5000000 items in 0.522 s)
+RESULT_TP name="padded ring 65,536, 256 B (different L3, cpu2->cpu10)" mops=9.5812 ns_per_pair=104.3709 items=5000000 seconds=0.521854
+unpadded ring 65,536, 8 B (different L3, cpu2->cpu10)     58.43 Mops/s    17.12 ns/pair  (20000000 items in 0.342 s)
+RESULT_TP name="unpadded ring 65,536, 8 B (different L3, cpu2->cpu10)" mops=58.4265 ns_per_pair=17.1155 items=20000000 seconds=0.342311
+
+Note: cost is wall time per enqueue+dequeue pair at steady state; it is not one-way latency.
