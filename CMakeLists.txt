@@ -7,6 +7,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(SPSC_BUILD_TESTS "Build the unit and stress tests" ON)
+option(SPSC_BUILD_BENCHMARKS "Build the standalone latency/throughput harnesses" ON)
+option(SPSC_BUILD_GBENCH "Build the Google Benchmark cross-check (may download it)" ON)
 option(SPSC_WERROR "Treat compiler warnings as errors" ON)
 set(SPSC_SANITIZER "" CACHE STRING
     "Sanitizer to enable: address,undefined | thread | empty for none")
@@ -53,4 +55,39 @@ if(SPSC_BUILD_TESTS)
     add_executable(test_no_alloc test/test_no_alloc.cpp)
     target_link_libraries(test_no_alloc PRIVATE spsc_options)
     add_test(NAME test_no_alloc COMMAND test_no_alloc)
+endif()
+
+# --- Standalone benchmark harnesses ----------------------------------------
+if(SPSC_BUILD_BENCHMARKS)
+    add_executable(bench_latency bench/bench_latency.cpp)
+    target_link_libraries(bench_latency PRIVATE spsc_options)
+
+    add_executable(bench_throughput bench/bench_throughput.cpp)
+    target_link_libraries(bench_throughput PRIVATE spsc_options)
+
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        set(SPSC_RELEASE_FLAGS $<$<CONFIG:Release>:-O3 -march=native>)
+        target_compile_options(bench_latency PRIVATE ${SPSC_RELEASE_FLAGS})
+        target_compile_options(bench_throughput PRIVATE ${SPSC_RELEASE_FLAGS})
+    endif()
+endif()
+
+# --- Google Benchmark cross-check ------------------------------------------
+if(SPSC_BUILD_GBENCH)
+    include(FetchContent)
+    FetchContent_Declare(
+        benchmark
+        GIT_REPOSITORY https://github.com/google/benchmark.git
+        GIT_TAG v1.9.5
+    )
+    set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(benchmark)
+
+    add_executable(spscqueue main.cpp)
+    target_link_libraries(spscqueue PRIVATE spsc_options benchmark::benchmark)
+    target_include_directories(spscqueue PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/bench)
+
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        target_compile_options(spscqueue PRIVATE $<$<CONFIG:Release>:-O3 -march=native>)
+    endif()
 endif()
